@@ -1,26 +1,22 @@
-console.log("hi")
-
 const inputName=document.querySelector("#name-user");
 const inputDOb=document.querySelector("#dob-user");
-let subBtn= document.querySelector("#btn-submit");
+let submitBtn= document.querySelector("#btn-submit");
+const outputResult=document.querySelector("#result");
 
 function clickHandler()
 {
-    console.log(inputDOb.value.getFullYear());
-    console.log(inputDOb.value)
-    console.log(inputName.value)
-    console.log("clicked")
+    const [year , month, date] = inputDOb.value.split("-");
+    let out=checkLeapYear(year);
+    outputResult.innerText=out;
 }
 
 function checkLeapYear(year) {
-
     //three conditions to find out the leap year
     if ((0 == year % 4) && (0 != year % 100) || (0 == year % 400)) {
-        console.log(year + ' is a leap year');
+        return(year + ' is a leap year');
     } else {
-        console.log(year + ' is not a leap year');
+        return(year + ' is not a leap year');
     }
 }
 
-
-subBtn.addEventListener("click",clickHandler)
+submitBtn.addEventListener("click",clickHandler)
